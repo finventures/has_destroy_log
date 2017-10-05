@@ -6,7 +6,7 @@ module HasDestroyLog
 
   class_methods do
     def has_destroy_log(**options)
-      if paper_trail_enabled_for_model?
+      if paper_trail.enabled?
         return
       end
 
