@@ -6,11 +6,9 @@ module HasDestroyLog
 
   class_methods do
     def has_destroy_log(**options)
-      if paper_trail.enabled?
-        return
-      end
+      return if PaperTrail.request.enabled_for_model?(self)
 
-      has_paper_trail :on => [:destroy], **options
+      has_paper_trail on: [:destroy], **options
     end
   end
 end
